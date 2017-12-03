@@ -26,6 +26,10 @@ Vagrant.configure("2") do |config|
 	config.vm.provision "shell", inline: "sudo yum install -y java-1.8.0-openjdk-devel"
 	config.vm.provision "shell", inline: "sudo yum install -y epel-release"
 	config.vm.provision "shell", inline: "sudo yum install -y ansible"
+	config.vm.provision "shell", inline: "sudo yum install -y nginx"
+	config.vm.provision "shell", inline: "sudo systemctl enable nginx.service"
+	config.vm.provision "shell", inline: "sudo systemctl start nginx.service"
+	config.vm.provision "shell", inline: "sudo cp /home/vagrant/devops/nginx.conf /etc/nginx"
 	
 		
 end

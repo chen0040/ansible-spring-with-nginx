@@ -1,0 +1,14 @@
+---
+- hosts: backend_servers
+  tasks:
+  - name: Run spring backend server 1
+    shell: nohup java -Dserver.port=8080 -jar {{ app_bin_dir }}/backend-one.jar 1 > /dev/null 2 > /dev/null &
+  - name: Run spring backend server 2
+    shell: nohup java -Dserver.port=8081 -jar {{ app_bin_dir }}/backend-two.jar 1 > /dev/null 2 > /dev/null &
+  - name: Start nginx server 
+    become: yes
+    service: name=nginx state=restarted
+
+
+
+

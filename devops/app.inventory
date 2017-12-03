@@ -1,0 +1,8 @@
+[backend_servers]
+127.0.0.1
+
+[backend_servers:vars]
+app_bin_dir=/home/vagrant/devops
+app_user=vagrant
+app_group=vagrant
+ansible_connection=local

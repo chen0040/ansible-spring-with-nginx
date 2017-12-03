@@ -1,0 +1,12 @@
+---
+- hosts: backend_servers
+  tasks:
+  - name: Kill backend-one server
+    shell: kill -9 `ps aux | grep backend-one | grep -v grep | awk 'NR==1{print $2}'`
+    ignore_errors: yes
+  - name: Kill backend-two server
+    shell: kill -9 `ps aux | grep backend-two | grep -v grep | awk 'NR==1{print $2}'`
+    ignore_errors: yes
+  - name: Stop nginx server 
+    become: yes
+    service: name=nginx state=stopped
